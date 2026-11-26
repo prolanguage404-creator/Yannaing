@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - log in or sign up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 980px;
+            width: 100%;
+            padding: 20px;
+            gap: 40px;
+        }
+
+        /* Left side - Logo and text */
+        .left-side {
+            flex: 1;
+            padding-bottom: 80px;
+        }
+
+        .logo {
+            color: #1877f2;
+            font-size: 60px;
+            font-weight: bold;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 28px;
+            line-height: 32px;
+            color: #1c1e21;
+            font-weight: normal;
+        }
+
+        /* Right side - Login form */
+        .right-side {
+            flex: 0 0 396px;
+        }
+
+        .login-box {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 17px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .login-form input[type="text"]:focus,
+        .login-form input[type="password"]:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px #e7f3ff;
+        }
+
+        .login-form input::placeholder {
+            color: #90949c;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #1877f2;
+            color: #fff;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-bottom: 16px;
+        }
+
+        .login-btn:hover {
+            background-color: #166fe5;
+        }
+
+        .forgot-link {
+            display: block;
+            text-align: center;
+            color: #1877f2;
+            font-size: 14px;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            border-bottom: 1px solid #dadde1;
+            margin: 20px 0;
+        }
+
+        .create-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 14px 20px;
+            background-color: #42b72a;
+            color: #fff;
+            font-size: 17px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .create-btn:hover {
+            background-color: #36a420;
+        }
+
+        .bottom-text {
+            text-align: center;
+            font-size: 14px;
+            color: #1c1e21;
+            margin-top: 28px;
+        }
+
+        .bottom-text a {
+            color: #1c1e21;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .bottom-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Error message */
+        .error {
+            color: #fa3e3e;
+            font-size: 13px;
+            margin-top: -8px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .left-side {
+                text-align: center;
+                padding-bottom: 0;
+            }
+
+            .logo {
+                font-size: 45px;
+            }
+
+            .tagline {
+                font-size: 22px;
+            }
+
+            .right-side {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 396px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left side -->
+        <div class="left-side">
+            <div class="logo">facebook</div>
+            <p class="tagline">Connect with friends and the world around you on Facebook.</p>
+        </div>
+
+        <!-- Right side -->
+        <div class="right-side">
+            <div class="login-box">
+                <form class="login-form" id="loginForm">
+                    <input type="text" id="email" placeholder="Email or phone number" autocomplete="username">
+                    <div class="error" id="emailError">Please enter a valid email or phone number.</div>
+
+                    <input type="password" id="password" placeholder="Password" autocomplete="current-password">
+                    <div class="error" id="passwordError">Please enter your password.</div>
+
+                    <button type="submit" class="login-btn">Log In</button>
+                    <a href="#" class="forgot-link">Forgotten password?</a>
+
+                    <div class="divider"></div>
+
+                    <button type="button" class="create-btn" id="createBtn">Create New Account</button>
+                </form>
+            </div>
+
+            <p class="bottom-text"><a href="#">Create a Page</a> for a celebrity, brand or business.</p>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const createBtn = document.getElementById('createBtn');
+
+        // Form validation
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            let isValid = true;
+
+            // Reset errors
+            emailError.classList.remove('show');
+            passwordError.classList.remove('show');
+
+            const emailValue = emailInput.value.trim();
+            const passwordValue = passwordInput.value.trim();
+
+            // Email/phone validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phonePattern = /^[0-9+\-\s()]{7,15}$/;
+
+            if (emailValue === '') {
+                emailError.textContent = 'Please enter your email or phone number.';
+                emailError.classList.add('show');
+                isValid = false;
+            } else if (!emailPattern.test(emailValue) && !phonePattern.test(emailValue)) {
+                emailError.textContent = 'Please enter a valid email or phone number.';
+                emailError.classList.add('show');
+                isValid = false;
+            }
+
+            // Password validation
+            if (passwordValue === '') {
+                passwordError.textContent = 'Please enter your password.';
+                passwordError.classList.add('show');
+                isValid = false;
+            } else if (passwordValue.length < 6) {
+                passwordError.textContent = 'Password must be at least 6 characters.';
+                passwordError.classList.add('show');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Simulate login (in real app, you would send data to server)
+                alert('Login successful! (Demo only - no data is sent anywhere)');
+                // loginForm.submit(); // Use this in real implementation
+            }
+        });
+
+        // Clear error on input
+        emailInput.addEventListener('input', () => emailError.classList.remove('show'));
+        passwordInput.addEventListener('input', () => passwordError.classList.remove('show'));
+
+        // Create new account button
+        createBtn.addEventListener('click', () => {
+            alert('This is a demo. "Create New Account" would open a signup form.');
+        });
+
+        // Forgot password link
+        document.querySelector('.forgot-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('This is a demo. "Forgot password" would open a recovery form.');
+        });
+    </script>
+</body>
+</html>
